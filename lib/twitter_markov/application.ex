@@ -9,7 +9,7 @@ defmodule TwitterMarkov.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(TwitterMarkov.Repo, []),
+      # supervisor(TwitterMarkov.Repo, []),
       # Start the endpoint when the application starts
       supervisor(TwitterMarkov.Web.Endpoint, []),
       # Start your own worker by calling: TwitterMarkov.Worker.start_link(arg1, arg2, arg3)
