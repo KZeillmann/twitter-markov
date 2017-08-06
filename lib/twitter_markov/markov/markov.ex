@@ -27,6 +27,9 @@ defmodule TwitterMarkov.Markov do
   def sanitize_tweet(tweet) do
     tweet
     |> String.replace(~r(&amp;), "&")
+    |> String.replace(~r(&gt;), ">")
+    |> String.replace(~r(&tt;), "<")
+    |> String.replace(~r(&gt;), ">")
   end
 
   def analyze_tweet(tweet) do
