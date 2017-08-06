@@ -1,18 +1,23 @@
 <div class="jumbotron">
-  <h3 class="display-3"><%= link("@#{@username}", to: "https://twitter.com/#{@username}") %> says:</h3>
+  <h3 class="display-4"><%= link("@#{@username}", to: "https://twitter.com/#{@username}") %> says:</h3>
   <hr>
   <p class="lead"><%= @tweet %></p>
 </div>
 
 <div class="row marketing">
   <p>Do it again!</p>
-  <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
-    <%= hidden_input f, :username, value: @username %>
-    <%= submit "Generate another tweet for #{@username}" %>
-  <% end %>
+  <div class="container">
+    <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
+      <%= hidden_input f, :username, value: @username %>
+      <%= submit "Generate another tweet for #{@username}" %>
+    <% end %>
+  </div>
   <p>Or try a different user</p>
-  <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
-    <%= text_input f, :username, value: "" %>
-    <%= submit "Generate another tweet" %>
-  <% end %>
+  <div class="container">
+    <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
+      <%= text_input f, :username, value: "" %>
+      <%= submit "Generate another tweet" %>
+    <% end %>
+  </div>
+
 </div>
