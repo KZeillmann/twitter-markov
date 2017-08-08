@@ -16,7 +16,8 @@
       <header class="header container">
         <nav role="navigation">
           <ul class="nav nav-pills">
-            <li><a class="nav-link active" href="/">Home</a></li>
+            <li><%= link "Home", to: "/", class: "nav-link" %></li>
+            <li><%= link "How It Works", to: "/", class: "nav-link" %></li>
           </ul>
         </nav>
       </header>
