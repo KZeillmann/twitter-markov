@@ -9,8 +9,16 @@ RUN mix archive.install --force https://github.com/phoenixframework/archives/raw
 RUN mix local.hex --force \
   && mix local.rebar --force
 
-WORKDIR .
+ENV MIX_ENV prod
+
+RUN mkdir /app
+
+COPY . /app/
+
+WORKDIR /app
+
+RUN mix do deps.get, compile, phx.digest, compile, release
 
 EXPOSE 80
 
-CMD ["mix phx.server"]
+ENTRYPOINT ["_build/dev/rel/twitter_markov/bin/twitter_markov", "foreground"]
