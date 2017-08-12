@@ -1,15 +1,28 @@
 <div class="jumbotron">
-  <h3 class="display-4"><%= link("@#{@username}", to: "https://twitter.com/#{@username}") %> says:</h3>
-  <hr>
-  <p class="lead"><%= @tweet %></p>
+  <div class="tweet">
+    <div class="tweet-header">
+      <a href="https://twitter.com/<%= @user.screen_name %>" class="tweet-header-link">
+        <img src="<%= @user.profile_image_url %>" alt="" class="avatar">
+        <span class="tweet-full-name">
+          <strong class="full-name"><%= @user.name %></strong>
+        </span>
+        <span class="username"><%= @user.screen_name %></span>
+      </a>
+    </div>
+    <div class="tweet-content">
+      <p class="lead tweet-text"><%= @tweet %></p>
+    </div>
+
+  </div>
+
 </div>
 
 <div class="row marketing">
   <p>Do it again!</p>
   <div class="container">
     <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
-      <%= hidden_input f, :username, value: @username %>
-      <%= submit "Generate another tweet for #{@username}" %>
+      <%= hidden_input f, :username, value: @user.screen_name %>
+      <%= submit "Generate another tweet for #{@user.screen_name}" %>
     <% end %>
   </div>
   <p>Or try a different user</p>

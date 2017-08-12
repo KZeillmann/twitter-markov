@@ -7,14 +7,21 @@ defmodule TwitterMarkov.Markov do
 
 
   def create_sample_tweet(username) do
-    retrieve_past_tweets(username, 200)
-    |> analyze_tweets
-    |> generate_tweet("")
+    tweets = retrieve_past_tweets(username, 200)
+    generated_tweet = tweets
+        |> Enum.map(&(Map.get(&1, :full_text)))
+        |> analyze_tweets
+        |> generate_tweet("")
+    user = tweets
+    |> List.first
+    |> Map.get(:user)
+    |> IO.inspect
+
+    {generated_tweet, user}
   end
 
   def retrieve_past_tweets(username, count) do
     TwitterMarkov.TwitterHelper.get_tweets(username, count)
-    |> Enum.map(&(Map.get(&1, :full_text)))
   end
 
   def analyze_tweets(tweets) do
@@ -30,6 +37,7 @@ defmodule TwitterMarkov.Markov do
     |> String.replace(~r(&gt;), ">")
     |> String.replace(~r(&tt;), "<")
     |> String.replace(~r(&gt;), ">")
+    |> String.replace(~r(https://t.co.*), "");
   end
 
   def analyze_tweet(tweet) do
