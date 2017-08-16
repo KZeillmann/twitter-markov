@@ -15,7 +15,6 @@ defmodule TwitterMarkov.Markov do
     user = tweets
     |> List.first
     |> Map.get(:user)
-    |> IO.inspect
 
     {generated_tweet, user}
   end
