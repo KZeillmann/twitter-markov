@@ -15,7 +15,8 @@ use Mix.Config
 # which you typically run after static files are built.
 config :twitter_markov, TwitterMarkov.Web.Endpoint,
   on_init: {TwitterMarkov.Web.Endpoint, :load_from_system_env, []},
-  url: [host: "example.com", port: 80],
+  http: [port: 80],
+  url: [host: "markovtweets.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -51,7 +52,7 @@ config :logger, level: :info
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
 #
-#     config :phoenix, :serve_endpoints, true
+    config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
