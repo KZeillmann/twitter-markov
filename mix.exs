@@ -17,7 +17,7 @@ defmodule TwitterMarkov.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {TwitterMarkov.Application, []},
-     extra_applications: [:logger, :runtime_tools]]
+     extra_applications: [:logger, :runtime_tools, :oauther]]
   end
 
   # Specifies which paths to compile per environment.
