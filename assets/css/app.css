@@ -14,7 +14,6 @@
   font-size: 27px;
   line-height: 32px;
   letter-spacing: 0.01em;
-  word-wrap: break-word;
 }
 
 .tweet-header {
@@ -25,10 +24,6 @@
   margin-bottom: 15px;
 }
 
-.tweet-header-link {
-
-}
-
 .tweet-full-name {
   display: block;
   font-size: 18px;
@@ -36,11 +31,15 @@
   font-weight: bold;
 }
 
+.tweet-account-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .avatar {
   float: left;
   border-radius: 50%;
   margin-top: 0px;
-
 }
 
 .full-name {

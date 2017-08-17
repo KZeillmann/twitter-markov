@@ -3,10 +3,13 @@
     <div class="tweet-header">
       <a href="https://twitter.com/<%= @user.screen_name %>" class="tweet-header-link">
         <img src="<%= @user.profile_image_url %>" alt="" class="avatar">
-        <span class="tweet-full-name">
-          <strong class="full-name"><%= @user.name %></strong>
-        </span>
-        <span class="username"><%= @user.screen_name %></span>
+        <div class="tweet-account-info">
+          <span class="tweet-full-name">
+            <strong class="full-name"><%= @user.name %></strong>
+          </span>
+          <span class="username"><%= @user.screen_name %></span>
+        </div>
+
       </a>
     </div>
     <div class="tweet-content">
@@ -22,14 +25,14 @@
   <div class="container">
     <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
       <%= hidden_input f, :username, value: @user.screen_name %>
-      <%= submit "Generate another tweet for #{@user.screen_name}" %>
+      <%= submit "Generate another tweet for #{@user.screen_name}", class: "btn btn-primary" %>
     <% end %>
   </div>
   <p>Or try a different user</p>
   <div class="container">
     <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
       <%= text_input f, :username, value: "" %>
-      <%= submit "Generate another tweet" %>
+      <%= submit "Generate another tweet", class: "btn btn-primary" %>
     <% end %>
   </div>
 
