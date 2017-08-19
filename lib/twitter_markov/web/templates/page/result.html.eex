@@ -9,29 +9,29 @@
           </span>
           <span class="username"><%= @user.screen_name %></span>
         </div>
-
       </a>
     </div>
     <div class="tweet-content">
       <p class="lead tweet-text"><%= @tweet %></p>
     </div>
-
   </div>
-
 </div>
 
 <div class="row marketing">
   <p>Do it again!</p>
-  <div class="container">
+  <div class="container input-group">
     <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
       <%= hidden_input f, :username, value: @user.screen_name %>
-      <%= submit "Generate another tweet for #{@user.screen_name}", class: "btn btn-primary" %>
+      <%= submit "Generate another tweet for #{@user.screen_name}", class: "btn btn-primary btn-lg" %>
     <% end %>
   </div>
   <p>Or try a different user</p>
   <div class="container">
     <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
-      <%= text_input f, :username, value: "" %>
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <%= text_input f, :username, value: "", placeholder: "Username", class: "form-control" %>
+      </div>
       <%= submit "Generate another tweet", class: "btn btn-primary" %>
     <% end %>
   </div>

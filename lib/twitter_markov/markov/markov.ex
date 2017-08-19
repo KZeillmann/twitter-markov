@@ -2,7 +2,12 @@ defmodule TwitterMarkov.Markov do
   @prefix_length 1
 
   def get_sample_tweet(username) do
-    create_sample_tweet(username)
+    try do
+      create_sample_tweet(username)
+    rescue
+      e in ExTwitter.Error -> {:error, e.message}
+      e -> {:error, e.message}
+    end
   end
 
 

@@ -1,10 +1,20 @@
 <div class="jumbotron">
   <h3>Markov Tweets</h3>
 </div>
+<div class="container-fluid">
+  <p>
+    The Markov Chain Tweet Generator creates random tweets for a Twitter user.
+  </p>
+  <p>Input a Twitter username below and give it a try!</p>
+</div>
 
 <div class="row marketing">
-  <%= form_for @conn, page_path(@conn, :result), [as: :form_data], fn f ->  %>
-    <%= text_input f, :username, [placeholder: "e.g. realDonaldTrump"] %>
-    <%= submit "Generate Random Tweet", class: "btn btn-primary", style: "display: block" %>
+
+  <%= form_for @conn, page_path(@conn, :result), [as: :form_data, class: "form-inline"], fn f ->  %>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <%= text_input f, :username, value: "", placeholder: "Username", class: "form-control" %>
+    </div>
+    <%= submit "Generate Random Tweet", class: "btn btn-primary" %>
   <% end %>
 </div>
